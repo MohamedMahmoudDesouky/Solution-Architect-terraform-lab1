@@ -14,16 +14,19 @@ data "aws_ami" "amazon_linux_2023" {
   }
 }
 
+
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+
 resource "aws_vpc" "lab1_vpc" {
   cidr_block = "172.16.0.0/16"
 
   tags = {
     Name = "lab1-vpc"
   }
-}
-
-data "aws_availability_zones" "available" {
-  state = "available"
 }
 
 resource "aws_subnet" "public_1" {
